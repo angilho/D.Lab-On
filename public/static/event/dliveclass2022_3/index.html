@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>디랩온 DLIVE CLASS</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet" />
+		<script src="/static/event/dliveclass2022_3/swiper.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/event/dliveclass2022_3/swiper.min.css" />
+	</head>
+	<body>
+		<style>
+			.event_container {
+				width: 100%;
+			}
+			.event_container_mobile {
+				width: 100%;
+			}
+			@media (max-width: 767.98px) {
+				.event_container {
+					display: none;
+				}
+				.event_container_mobile {
+					display: block;
+				}
+			}
+			@media (min-width: 768px) {
+				.event_container {
+					display: block;
+				}
+				.event_container_mobile {
+					display: none;
+				}
+				.section5_wrap {
+					position: relative;
+				}
+				.section5_wrap .card-stage {
+					position: absolute;
+					width: 100%;
+					margin-top: calc(100% / 1440 * 331);
+				}
+
+				.section5_wrap .card-stage .stage-container {
+					display: flex;
+					justify-content: center;
+				}
+				.section5_wrap .card-stage img {
+					width: calc(100% / 1440 * 241);
+					height: auto;
+					margin-right: calc(100% / 1440 * 10);
+					margin-bottom: calc(100% / 1440 * 10);
+					-webkit-transition: all 200ms ease-in;
+					-webkit-transform: scale(1);
+					-ms-transition: all 200ms ease-in;
+					-ms-transform: scale(1);
+					-moz-transition: all 200ms ease-in;
+					-moz-transform: scale(1);
+					transition: all 200ms ease-in;
+					transform: scale(1);
+				}
+				.section5_wrap .card-stage img:last-child {
+					margin-right: 0;
+				}
+				.section5_wrap .card-stage img:hover {
+					filter: drop-shadow(0px 0px 150px #000000);
+					z-index: 2;
+					-webkit-transition: all 200ms ease-in;
+					-webkit-transform: scale(1.5);
+					-ms-transition: all 200ms ease-in;
+					-ms-transform: scale(1.5);
+					-moz-transition: all 200ms ease-in;
+					-moz-transform: scale(1.5);
+					transition: all 200ms ease-in;
+					transform: scale(1.1);
+				}
+
+				.section6_wrap {
+					position: relative;
+				}
+				.section6_wrap .calendar {
+					width: calc(100% / 1440 * 870);
+					height: auto;
+					position: absolute;
+					left: calc(100% / 1440 * 285);
+					margin-top: calc(100% / 1440 * 890);
+					display: none;
+				}
+				.section6_wrap .calendar.on {
+					display: block;
+				}
+			}
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+			@media (min-width: 768px) {
+				.desktop_card_container {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+				.row {
+					display: flex;
+				}
+				.row:not(:first-child) {
+					margin-top: calc(1154 / 1440 * 36px);
+				}
+				.card {
+					position: relative;
+					cursor: pointer;
+				}
+				.card.right {
+					margin-left: calc(1154 / 1440 * 31px);
+				}
+				.card_hover {
+					display: none;
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 0.6);
+					border-radius: 8px;
+					align-items: center;
+					justify-content: center;
+				}
+				.card_hover_text {
+					text-align: center;
+					font-family: "Noto Sans KR", sans-serif;
+					font-weight: 700;
+					font-size: calc(1154 / 1440 * 26px);
+					line-height: calc(1154 / 1440 * 36.4px);
+					color: white;
+				}
+				.desktop_card_img {
+					width: calc(1154 / 1440 * 476px);
+					height: auto;
+				}
+				#desktop6,
+				#desktop7 {
+					scroll-margin-top: 103px;
+				}
+			}
+			@media (max-width: 767.98px) {
+				.card {
+					position: relative;
+					cursor: pointer;
+				}
+				.card.second {
+					margin-top: 30px;
+				}
+				.card_hover {
+					display: none;
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 0.6);
+					border-radius: 4px;
+					align-items: center;
+					justify-content: center;
+				}
+				.card_hover_text {
+					text-align: center;
+					font-family: "Noto Sans KR", sans-serif;
+					font-weight: 700;
+					font-size: 14px;
+					line-height: 24px;
+					color: white;
+				}
+				#mobile6,
+				#mobile7 {
+					scroll-margin-top: 48px;
+				}
+
+				.section6_calendar_container {
+					position: relative;
+					width: 100%;
+					height: calc(100vw / 460 * 490);
+				}
+				ul,
+				li {
+					list-style: none;
+				}
+				#calendar-swiper {
+					position: absolute;
+					left: 0;
+					top: calc(100vw / 460 * 70);
+				}
+				#calendar-swiper .swiper-wrapper {
+					margin: 0px;
+					padding: 0px;
+				}
+				#calendar-swiper .swiper-slide {
+					padding: 0 20px 40px 20px;
+					box-sizing: border-box;
+				}
+			}
+			.hide {
+				display: none;
+			}
+		</style>
+		<div class="event_container">
+			<img src="/static/event/dliveclass2022_3/desktop_01.png" />
+			<img src="/static/event/dliveclass2022_3/desktop_02.png" />
+			<img src="/static/event/dliveclass2022_3/desktop_03.png" />
+			<img src="/static/event/dliveclass2022_3/desktop_04.png" />
+			<div class="section5_wrap">
+				<div class="card-stage">
+					<div class="stage-container">
+						<img src="/static/event/dliveclass2022_3/desktop_05_card1.png" />
+						<img src="/static/event/dliveclass2022_3/desktop_05_card2.png" />
+						<img src="/static/event/dliveclass2022_3/desktop_05_card3.png" />
+						<img src="/static/event/dliveclass2022_3/desktop_05_card4.png" />
+					</div>
+					<div class="stage-container">
+						<img src="/static/event/dliveclass2022_3/desktop_05_card5.png" />
+						<img src="/static/event/dliveclass2022_3/desktop_05_card6.png" />
+						<img src="/static/event/dliveclass2022_3/desktop_05_card7.png" />
+					</div>
+				</div>
+				<img src="/static/event/dliveclass2022_3/desktop_05.png" />
+			</div>
+			<div class="section6_wrap">
+				<img
+					src="/static/event/dliveclass2022_3/desktop_06_calendar1.png"
+					alt=""
+					class="calendar calendar1 on"
+				/>
+				<img src="/static/event/dliveclass2022_3/desktop_06_calendar2.png" alt="" class="calendar calendar2" />
+				<img
+					id="desktop6"
+					src="/static/event/dliveclass2022_3/desktop_06.png"
+					usemap="#Desktop6"
+					width="1440"
+					height="1559"
+				/>
+				<map name="Desktop6">
+					<area
+						alt="카카오채팅상담"
+						title=""
+						href="http://pf.kakao.com/_Zxclls/chat"
+						target="_blank"
+						coords="430,1442,715,1495"
+						shape="rect"
+					/>
+					<area
+						alt="라이브클래스신청"
+						title=""
+						href="https://dlabon.com/detail_curriculum"
+						target="_blank"
+						coords="730,1442,1015,1495"
+						shape="rect"
+					/>
+					<area alt="prevBtn" href="javascript:changeCalendar()" coords="200,1045,250,1085" shape="rect" />
+					<area alt="nextBtn" href="javascript:changeCalendar()" coords="1195,1045,1242,1085" shape="rect" />
+				</map>
+			</div>
+			<div>
+				<img
+					id="desktop_tab1"
+					class="desktop_tab"
+					src="/static/event/dliveclass2022_3/desktop_tab_1.png"
+					usemap="#Desktop_tab1"
+					width="1440"
+					height="330"
+				/>
+				<map name="Desktop_tab1">
+					<area
+						alt="앱 인벤터 클래스"
+						title=""
+						href="javascript:changeDesktopTab(2)"
+						coords="558,166,883,265"
+						shape="rect"
+					/>
+					<area
+						alt="파이썬 클래스"
+						title=""
+						href="javascript:changeDesktopTab(3)"
+						coords="887,166,1212,265"
+						shape="rect"
+					/>
+				</map>
+				<img
+					id="desktop_tab2"
+					class="desktop_tab hide"
+					src="/static/event/dliveclass2022_3/desktop_tab_2.png"
+					usemap="#Desktop_tab2"
+					width="1440"
+					height="330"
+				/>
+				<map name="Desktop_tab2">
+					<area
+						alt="스크래치 클래스"
+						title=""
+						href="javascript:changeDesktopTab(1)"
+						coords="229,166,554,265"
+						shape="rect"
+					/>
+					<area
+						alt="파이썬 클래스"
+						title=""
+						href="javascript:changeDesktopTab(3)"
+						coords="887,166,1212,265"
+						shape="rect"
+					/>
+				</map>
+				<img
+					id="desktop_tab3"
+					class="desktop_tab hide"
+					src="/static/event/dliveclass2022_3/desktop_tab_3.png"
+					usemap="#Desktop_tab3"
+					width="1440"
+					height="330"
+				/>
+				<map name="Desktop_tab3">
+					<area
+						alt="스크래치 클래스"
+						title=""
+						href="javascript:changeDesktopTab(1)"
+						coords="229,166,554,265"
+						shape="rect"
+					/>
+					<area
+						alt="앱 인벤터 클래스"
+						title=""
+						href="javascript:changeDesktopTab(2)"
+						coords="558,166,883,265"
+						shape="rect"
+					/>
+				</map>
+				<div id="desktop_card1" class="desktop_card_container">
+					<div class="row">
+						<div class="card">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_1-1.png" />
+							<a href="https://dlabon.com/courses/1" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="card right">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_1-2.png" />
+							<a href="https://dlabon.com/courses/2" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="card">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_1-3.png" />
+							<a href="https://dlabon.com/courses/3" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="card right">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_1-4.png" />
+							<a href="https://dlabon.com/courses/4" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="desktop_card2" class="desktop_card_container hide">
+					<div class="row">
+						<div class="card">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_2-1.png" />
+							<a href="https://dlabon.com/courses/9" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="card right">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_2-2.png" />
+							<a href="https://dlabon.com/courses/10" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div id="desktop_card3" class="desktop_card_container hide">
+					<div class="row">
+						<div class="card">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_3-1.png" />
+							<a href="https://dlabon.com/courses/5" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+						<div class="card right">
+							<img class="desktop_card_img" src="/static/event/dliveclass2022_3/desktop_card_3-2.png" />
+							<a href="https://dlabon.com/courses/6" target="_blank">
+								<div class="card_hover">
+									<span class="card_hover_text">
+										수업에 대한 자세한<br />
+										정보를 얻으려면?
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<img
+					src="/static/event/dliveclass2022_3/desktop_register_button.png"
+					usemap="#Desktop_register_button"
+					width="1440"
+					height="224"
+				/>
+				<map name="Desktop_register_button">
+					<area
+						alt="LIVE 클래스 신청하기"
+						title=""
+						href="https://dlabon.com/detail_curriculum"
+						target="_blank"
+						coords="577,100,864,154"
+						shape="rect"
+					/>
+				</map>
+			</div>
+			<img
+				id="desktop7"
+				src="/static/event/dliveclass2022_3/desktop_07.png"
+				usemap="#Desktop7"
+				width="1440"
+				height="1782"
+			/>
+			<map name="Desktop7">
+				<area
+					alt="쿠폰 받으러 가기"
+					title=""
+					href="http://pf.kakao.com/_Zxclls"
+					target="_blank"
+					coords="450,1590,710,1640"
+					shape="rect"
+				/>
+				<area
+					alt="쿠폰 사용법 확인하기"
+					title=""
+					href="https://dlabs.notion.site/e0010cdf75db4bd5844ead388a3acbf8"
+					target="_blank"
+					coords="730,1590,990,1640"
+					shape="rect"
+				/>
+			</map>
+		</div>
+		<div class="event_container_mobile">
+			<img src="/static/event/dliveclass2022_3/mobile_01.png" />
+			<img src="/static/event/dliveclass2022_3/mobile_02.png" />
+			<img src="/static/event/dliveclass2022_3/mobile_03.png" />
+			<img src="/static/event/dliveclass2022_3/mobile_04.png" />
+			<img src="/static/event/dliveclass2022_3/mobile_05.png" />
+			<div class="section6_wrap">
+				<img id="mobile6" src="/static/event/dliveclass2022_3/mobile_06.png" />
+				<div class="section6_calendar_container">
+					<img
+						src="/static/event/dliveclass2022_3/mobile_06_calendar_bg.png"
+						class="calendar calendar1 on"
+						usemap="#CalendarBg"
+						width="460"
+						height="510"
+					/>
+					<map name="CalendarBg">
+						<area
+							alt="prevBtn"
+							href="javascript:changeMobileCalendar()"
+							coords="50,10,80,50"
+							shape="rect"
+						/>
+						<area
+							alt="nextBtn"
+							href="javascript:changeMobileCalendar()"
+							coords="380,10,410,50"
+							shape="rect"
+						/>
+					</map>
+					<div id="calendar-swiper" class="main-carousel swiper-container">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<img
+									class="calendar_mobile"
+									src="/static/event/dliveclass2022_3/mobile_06_calendar1.png"
+								/>
+							</li>
+							<li class="swiper-slide">
+								<img
+									class="calendar_mobile"
+									src="/static/event/dliveclass2022_3/mobile_06_calendar2.png"
+								/>
+							</li>
+						</ul>
+						<div class="swiper-pagination" style="bottom: 20px; display: block"></div>
+					</div>
+				</div>
+				<img
+					src="/static/event/dliveclass2022_3/mobile_06_sub.png"
+					usemap="#Mobile6"
+					width="460"
+					height="341"
+					style="margin-top: -2px;"
+				/>
+				<map name="Mobile6">
+					<area
+						alt="카카오채팅상담바로가기"
+						title=""
+						href="http://pf.kakao.com/_Zxclls/chat"
+						target="_blank"
+						coords="90,125,370,175"
+						shape="rect"
+					/>
+					<area
+						alt="수강신청바로가기"
+						title=""
+						href="https://dlabon.com/detail_curriculum"
+						target="_blank"
+						coords="90,190,370,240"
+						shape="rect"
+					/>
+				</map>
+			</div>
+			<div>
+				<img
+					id="mobile_tab1"
+					class="mobile_tab"
+					src="/static/event/dliveclass2022_3/mobile_tab_1.png"
+					usemap="#Mobile_tab1"
+					width="460"
+					height="261"
+				/>
+				<map name="Mobile_tab1">
+					<area
+						alt="앱 인벤터 클래스"
+						title=""
+						href="javascript:changeMobileTab(2)"
+						coords="153,0,304,100"
+						shape="rect"
+					/>
+					<area
+						alt="파이썬 클래스"
+						title=""
+						href="javascript:changeMobileTab(3)"
+						coords="304,0,458,100"
+						shape="rect"
+					/>
+				</map>
+				<img
+					id="mobile_tab2"
+					class="mobile_tab hide"
+					src="/static/event/dliveclass2022_3/mobile_tab_2.png"
+					usemap="#Mobile_tab2"
+					width="460"
+					height="261"
+				/>
+				<map name="Mobile_tab2">
+					<area
+						alt="스크래치 클래스"
+						title=""
+						href="javascript:changeMobileTab(1)"
+						coords="0,0,153,100"
+						shape="rect"
+					/>
+					<area
+						alt="파이썬 클래스"
+						title=""
+						href="javascript:changeMobileTab(3)"
+						coords="304,0,458,100"
+						shape="rect"
+					/>
+				</map>
+				<img
+					id="mobile_tab3"
+					class="mobile_tab hide"
+					src="/static/event/dliveclass2022_3/mobile_tab_3.png"
+					usemap="#Mobile_tab3"
+					width="460"
+					height="261"
+				/>
+				<map name="Mobile_tab3">
+					<area
+						alt="스크래치 클래스"
+						title=""
+						href="javascript:changeMobileTab(1)"
+						coords="0,0,153,100"
+						shape="rect"
+					/>
+					<area
+						alt="앱 인벤터 클래스"
+						title=""
+						href="javascript:changeMobileTab(2)"
+						coords="153,0,304,100"
+						shape="rect"
+					/>
+				</map>
+				<div id="mobile_card1" class="mobile_card_container">
+					<div class="card">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_1-1.png" />
+						<a href="https://dlabon.com/courses/1" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+					<div class="card second">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_1-2.png" />
+						<a href="https://dlabon.com/courses/2" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+
+					<div class="card second">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_1-3.png" />
+						<a href="https://dlabon.com/courses/3" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+					<div class="card second">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_1-4.png" />
+						<a href="https://dlabon.com/courses/4" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div id="mobile_card2" class="mobile_card_container hide">
+					<div class="card">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_2-1.png" />
+						<a href="https://dlabon.com/courses/9" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+					<div class="card second">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_2-2.png" />
+						<a href="https://dlabon.com/courses/10" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div id="mobile_card3" class="mobile_card_container hide">
+					<div class="card">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_3-1.png" />
+						<a href="https://dlabon.com/courses/5" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+					<div class="card second">
+						<img class="mobile_card_img" src="/static/event/dliveclass2022_3/mobile_card_3-2.png" />
+						<a href="https://dlabon.com/courses/6" target="_blank">
+							<div class="card_hover">
+								<span class="card_hover_text">
+									수업에 대한 자세한<br />
+									정보를 얻으려면?
+								</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<img
+					src="/static/event/dliveclass2022_3/mobile_register_button.png"
+					usemap="#Mobile_register_button"
+					width="460"
+					height="174"
+				/>
+				<map name="Mobile_register_button">
+					<area
+						alt="LIVE 클래스 신청하기"
+						title=""
+						href="https://dlabon.com/detail_curriculum"
+						target="_blank"
+						coords="87,60,374,114"
+						shape="rect"
+					/>
+				</map>
+				<img
+					id="mobile7"
+					src="/static/event/dliveclass2022_3/mobile_07.png"
+					usemap="#Mobile7"
+					width="460"
+					height="2173"
+				/>
+				<map name="Mobile7">
+					<area
+						alt="쿠폰 받으러 가기"
+						title=""
+						href="http://pf.kakao.com/_Zxclls"
+						target="_blank"
+						coords="105,1930,355,1985"
+						shape="rect"
+					/>
+					<area
+						alt="쿠폰 사용법 확인하기"
+						title=""
+						href="https://dlabs.notion.site/e0010cdf75db4bd5844ead388a3acbf8"
+						target="_blank"
+						coords="105,1995,355,2050"
+						shape="rect"
+					/>
+				</map>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(e) {
+				$("img[usemap]").rwdImageMaps();
+
+				// is desktop
+				if ($(window).width() > 768) {
+					$(".desktop_card_container .card").click(function(e) {
+						$(".desktop_card_container .card .card_hover").hide();
+						var target = e.currentTarget;
+						$(e.currentTarget)
+							.find(".card_hover")
+							.css("display", "flex");
+					});
+
+					var floatingButton = $(
+						'<div class="floating_button" style="position: fixed; top: calc((100vh - 266px) / 2); right: calc((100vw - 1106px) / 2); display: flex; flex-direction: column;">'
+					);
+					var floatingButton1 = $(
+						'<img class="floating_button1" src="/static/event/dliveclass2022_3/desktop_floating_1.png" style="cursor: pointer; width: 125px; height: 125px;" />'
+					);
+					floatingButton1.click(function() {
+						$("#desktop6")[0].scrollIntoView({ behavior: "smooth" });
+					});
+					var floatingButton2 = $(
+						'<img class="floating_button2" src="/static/event/dliveclass2022_3/desktop_floating_2.png" style="cursor: pointer; width: 125px; height: 125px; margin-top: 16px;" />'
+					);
+					floatingButton2.click(function() {
+						$("#desktop7")[0].scrollIntoView({ behavior: "smooth" });
+					});
+
+					$(floatingButton).append(floatingButton1);
+					$(floatingButton).append(floatingButton2);
+					$(window.parent.document.getElementById("root")).append(floatingButton);
+					$(window.parent.document.getElementById("root")).append(
+						"<style>@media (max-width: 1200px) {.floating_button {right: 50px !important}}</style>"
+					);
+				} else {
+					calendarMobileSwiper = new Swiper("#calendar-swiper", {
+						loop: true,
+						speed: 400,
+						slidesPerView: "auto",
+						centeredSlides: true,
+						spaceBetween: 0
+					});
+
+					$(".mobile_card_container .card").click(function(e) {
+						$(".mobile_card_container .card .card_hover").hide();
+						var target = e.currentTarget;
+						$(e.currentTarget)
+							.find(".card_hover")
+							.css("display", "flex");
+					});
+
+					var floatingButton = $(
+						`<div class="floating_button" style="position: fixed; bottom: 0; background-image: url('/static/event/dliveclass2022_3/mobile_floating.png'); background-size: cover; background-repeat: no-repeat; display: flex;">`
+					);
+					var floatingButton1 = $(`<div style="width: 50vw; height: calc(100vw / 460 * 76)"></div>`);
+					floatingButton1.click(function() {
+						$("#mobile6")[0].scrollIntoView();
+					});
+					var floatingButton2 = $(`<div style="width: 50vw; height: calc(100vw / 460 * 76)"></div>`);
+					floatingButton2.click(function() {
+						$("#mobile7")[0].scrollIntoView();
+					});
+
+					$(floatingButton).append(floatingButton1);
+					$(floatingButton).append(floatingButton2);
+					$(window.parent.document.getElementById("root")).append(floatingButton);
+				}
+			});
+			function changeDesktopTab(tabId) {
+				$(".desktop_tab").hide();
+				$("#desktop_tab" + tabId).show();
+
+				$(".desktop_card_container").hide();
+				$("#desktop_card" + tabId).css("display", "flex");
+
+				window.parent.dispatchEvent(new Event("resize"));
+			}
+
+			function changeCalendar() {
+				if ($(".calendar1").hasClass("on")) {
+					$(".calendar1").removeClass("on");
+					$(".calendar2").addClass("on");
+				} else if ($(".calendar2").hasClass("on")) {
+					$(".calendar2").removeClass("on");
+					$(".calendar1").addClass("on");
+				}
+			}
+
+			var calendarMobileSwiper = null;
+			function changeMobileCalendar() {
+				if (calendarMobileSwiper) {
+					calendarMobileSwiper.slideNext();
+				}
+			}
+
+			function changeMobileTab(tabId) {
+				$(".mobile_tab").hide();
+				$("#mobile_tab" + tabId).show();
+
+				$(".mobile_card_container").hide();
+				$("#mobile_card" + tabId).show();
+
+				window.parent.dispatchEvent(new Event("resize"));
+			}
+		</script>
+	</body>
+</html>

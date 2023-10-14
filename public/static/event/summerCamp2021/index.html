@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>디랩온 여름방학 코딩캠프</title>
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="/static/event/summerCamp2021/imageMapResizer.min.js"></script>
+		<script src="/static/event/summerCamp2021/swiper.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/event/summerCamp2021/swiper.min.css" />
+	</head>
+	<body>
+		<style>
+			.event_container {
+				width: 100%;
+				padding-bottom: 200px;
+			}
+			.event_container_mobile {
+				width: 100%;
+			}
+			@media (max-width: 767.98px) {
+				.event_container {
+					display: none;
+				}
+				.event_container_mobile {
+					display: block;
+				}
+			}
+			@media (min-width: 768px) {
+				.event_container {
+					display: block;
+				}
+				.event_container_mobile {
+					display: none;
+				}
+			}
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+			.img_web2 {
+				display: none;
+			}
+			ul, ol, li, dl, dt, dd {
+				list-style: none;
+			}
+			#top-carousel-mobile .swiper-wrapper {
+				margin: 0px;
+				padding: 0px;
+			}
+			#top-carousel-mobile .swiper-slide {
+				height: calc(100% - 10px);
+			}
+			#top-carousel-mobile .swiper-pagination {
+				bottom: 20px !important;
+			}
+			#top-carousel-mobile .swiper-pagination .swiper-pagination-bullet-active {
+				background: black !important;
+			}
+			#top-carousel-mobile .swiper-pagination .swiper-pagination-bullet {
+				width: 12px;
+				height: 12px;
+				background: white;
+				border: 2px solid black;
+				opacity: 1;
+			}
+		</style>
+		<div class="event_container">
+			<div class="wrapper">
+				<img src="/static/event/summerCamp2021/web_1.jpg" usemap="#C_Web1">
+				<map name="C_Web1">
+					<area href="javascript:gotoRobloxCourse();" coords="500,3993,740,4115" shape="rect">
+					<area href="javascript:gotoScratchCourse();" coords="600,3540,860,3660" shape="rect">
+					<area href="javascript:gotoAppInventorCourse();" coords="940,3990,1220,4130" shape="rect">
+					<area href="javascript:gotoPythonCourse();" coords="195,4230,495,4370" shape="rect">
+				</map>
+				<img id="web2_default" src="/static/event/summerCamp2021/web_2_default.jpg" onclick="showCourse()">
+				<img class="img_web2 web2_1" src="/static/event/summerCamp2021/web_2_roblox.jpg" usemap="#C_Web2-1">
+				<img class="img_web2 web2_2" src="/static/event/summerCamp2021/web_2_scratch.jpg" usemap="#C_Web2-2">
+				<img class="img_web2 web2_3" src="/static/event/summerCamp2021/web_2_appinve.jpg" usemap="#C_Web2-3">
+				<img class="img_web2 web2_4" src="/static/event/summerCamp2021/web_2_python.jpg" usemap="#C_Web2-4">
+				<map name="C_Web2-1">
+                    <area href="javascript:prevCourse();" coords="112,1100,246,1234" shape="rect">
+                    <area href="javascript:nextCourse();" coords="1182,1092,1316,1226" shape="rect">
+					<area target="_blank" href="https://dlabon.com/curriculum" coords="190,1424,1249,1518" shape="rect">
+                </map>
+				<map name="C_Web2-2">
+                    <area href="javascript:prevCourse();" coords="112,1100,246,1234" shape="rect">
+                    <area href="javascript:nextCourse();" coords="1182,1092,1316,1226" shape="rect">
+					<area target="_blank" href="https://dlabon.com/curriculum" coords="190,1424,1249,1518" shape="rect">
+                </map>
+				<map name="C_Web2-3">
+                    <area href="javascript:prevCourse();" coords="112,1100,246,1234" shape="rect">
+                    <area href="javascript:nextCourse();" coords="1182,1092,1316,1226" shape="rect">
+					<area target="_blank" href="https://dlabon.com/curriculum" coords="190,1424,1249,1518" shape="rect">
+                </map>
+				<map name="C_Web2-4">
+                    <area href="javascript:prevCourse();" coords="112,1100,246,1234" shape="rect">
+                    <area href="javascript:nextCourse();" coords="1182,1092,1316,1226" shape="rect">
+					<area target="_blank" href="https://dlabon.com/curriculum" coords="190,1424,1249,1518" shape="rect">
+                </map>
+				<img src="/static/event/summerCamp2021/web_3.jpg" usemap="#C_Web3">
+				<map name="C_Web3">
+                    <area target="_blank" alt="디랩온 구경가기" href="https://dlabon.com/curriculum" coords="668,1230,1253,1421" shape="rect">
+                    <area target="_blank" alt="디랩 구경가기" href="https://daddyslab.com/summerCamp2021" coords="668,1432,1253,1573" shape="rect">
+                </map>
+			</div>
+		</div>
+		<div class="event_container_mobile">
+			<div class="wrapper">
+				<img src="/static/event/summerCamp2021/mobile_1.jpg">
+				<div class="area-carousel type-4">
+					<div id="top-carousel-mobile" class="main-carousel swiper-container" style="height: 100%">
+						<ul class="swiper-wrapper">
+							<li class="swiper-slide">
+								<img class="web2_1" src="/static/event/summerCamp2021/mobile_2_roblox.jpg">
+								<a target="_blank" href="https://dlabon.com/curriculum"><div style="width: 88%; height: 8.5%; background-color: transparent; position: absolute; top: 81.2%; left: 5%;"></div></a>
+							</li>
+							<li class="swiper-slide">
+								<img class="web2_2" src="/static/event/summerCamp2021/mobile_2_scratch.jpg">
+								<a target="_blank" href="https://dlabon.com/curriculum"><div style="width: 88%; height: 8.5%; background-color: transparent; position: absolute; top: 81.2%; left: 5%;"></div></a>
+							</li>
+							<li class="swiper-slide">
+								<img class="web2_3" src="/static/event/summerCamp2021/mobile_2_appin.jpg">
+								<a target="_blank" href="https://dlabon.com/curriculum"><div style="width: 88%; height: 8.5%; background-color: transparent; position: absolute; top: 81.2%; left: 5%;"></div></a>
+							</li>
+							<li class="swiper-slide">
+								<img class="web2_4" src="/static/event/summerCamp2021/mobile_2_python.jpg">
+								<a target="_blank" href="https://dlabon.com/curriculum"><div style="width: 88%; height: 8.5%; background-color: transparent; position: absolute; top: 81.2%; left: 5%;"></div></a>
+							</li>
+						</ul>
+						<div class="swiper-pagination" style="bottom: 20px; display: block"></div>
+					</div>
+				</div>
+				<img src="/static/event/summerCamp2021/mobile_3.jpg" usemap="#C_Mobile3">
+				<map name="C_Mobile3">
+                    <area target="_blank" alt="디랩온 구경가기" href="https://dlabon.com/curriculum" coords="40,1771,700,1881" shape="rect">
+                    <area target="_blank" alt="디랩 구경가기" href="https://daddyslab.com/summerCamp2021" coords="40,2215,700,2330" shape="rect">
+                </map>
+			</div>
+		</div>
+		<script>
+			var curWeb2Idx = 1;
+			function showCourse() {
+				$('#web2_default').hide();
+				$('.img_web2.web2_1').show();
+				$('map').imageMapResize();
+			}
+			function prevCourse() {
+				$('.img_web2.web2_'+curWeb2Idx).hide();
+				curWeb2Idx--;
+				if (curWeb2Idx == 0) {
+					curWeb2Idx = 4;
+				}
+				$('.img_web2.web2_'+curWeb2Idx).show();
+				$('map').imageMapResize();
+			}
+			function nextCourse() {
+				$('.img_web2.web2_'+curWeb2Idx).hide();
+				curWeb2Idx++;
+				if (curWeb2Idx > 4) {
+					curWeb2Idx = 1;
+				}
+				$('.img_web2.web2_'+curWeb2Idx).show();
+				$('map').imageMapResize();
+			}
+			function gotoCourse(targetIndex) {
+				$('#web2_default').hide();
+				$('.img_web2.web2_'+curWeb2Idx).hide();
+				$('.img_web2.web2_'+targetIndex).show();
+				curWeb2Idx = targetIndex;
+				$('map').imageMapResize();
+				$('.img_web2.web2_'+targetIndex)[0].scrollIntoView({behavior: 'smooth'});
+			}
+			function gotoRobloxCourse() {
+				gotoCourse(1);
+			}
+			function gotoScratchCourse() {
+				gotoCourse(2);
+			}
+			function gotoAppInventorCourse() {
+				gotoCourse(3);
+			}
+			function gotoPythonCourse() {
+				gotoCourse(4);
+			}
+		</script>
+		<script>
+			$(document).ready(function(e) {
+				$('map').imageMapResize();
+
+				var topMobileSwiper = new Swiper('#top-carousel-mobile', {
+					loop: true,
+					speed: 400,
+					slidesPerView: 'auto',
+					centeredSlides: true,
+					spaceBetween: 0,
+					autoplay: {
+						delay: 3000,
+						disableOnInteraction: false,
+					},
+					pagination: {
+						el: '#top-carousel-mobile .swiper-pagination',
+						type: 'bullets',
+						clickable: true,
+					},
+				});
+			});
+		</script>
+	</body>
+</html>

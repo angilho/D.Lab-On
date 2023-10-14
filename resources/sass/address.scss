@@ -1,0 +1,91 @@
+/* 바탕 배경 이미지 */
+.pop-address-search .pop-address-search-inner {
+	background-image: url(http://www.0000.com/img/backImg.png);
+}
+/* 회사 로고 이미지 */
+.pop-address-search .pop-address-search-inner .logo {
+	background: url(http://www.0000.com/img/logo.png) no-repeat;
+	background-position: center;
+}
+
+/* 바탕 배경색상 */
+.pop-address-search .pop-address-search-inner {
+	background-color: #ececec;
+}
+/* 검색창 바탕 배경색상 */
+.pop-address-search .pop-address-search-inner .search-wrap {
+	background-color: #dcf3f4;
+}
+/* 검색창 색상 */
+.pop-address-search .pop-address-search-inner .wrap input {
+	background-color: #ffffff;
+}
+/* 검색버튼 색상 */
+.pop-address-search .pop-address-search-inner .wrap {
+	background-color: #ffffff;
+}
+/* 본문 배경색(홀수) */
+.pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(odd) td {
+	background: #ffffff;
+}
+/* 본문 배경색(짝수) */
+.pop-address-search .pop-address-search-inner .result table.data-col tbody tr:nth-child(even) td {
+	background: #ffffff;
+}
+
+/* 회사 로고 이미지 */
+#logo span {
+	background: url(https://www.daddyslab.com/static/project/www/logo-campaign_2.svg) 0 0 no-repeat;
+	background-size: contain;
+}
+
+/* 바탕 배경색상*/
+body {
+	background-color: #373737;
+}
+#wrap {
+	background-color: #fff;
+}
+
+/* 검색도움말 색상 */
+#search p {
+	color: #3e566d;
+}
+
+/* 검색창 배경 색상 */
+#header {
+	background-color: #e9e9e9;
+}
+
+/* 도로명 아이콘 수정 */
+.icon_road > span {
+	border: 1px solid #186bb9;
+	background-color: #186bb9;
+	color: #fff;
+}
+
+/* 지번 아이콘 수정 */
+.icon_juso > span {
+	border: 1px solid #282828;
+	background-color: #fff;
+	color: #282828;
+}
+
+/* 하단버튼 */
+#address_detail input[type="button"] {
+	border: 1px solid #186bb9;
+	background-color: #186bb9;
+	color: #fff;
+}
+
+/* 페이지 선택된 페이지 버튼*/
+.page_num a {
+	background-color: #fff;
+	color: #101010;
+}
+
+/* 페이지 선택되지 않은 페이지 버튼*/
+.page_num strong {
+	background-color: #186bb9;
+	color: #fff;
+}

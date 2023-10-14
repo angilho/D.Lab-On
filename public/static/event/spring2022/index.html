@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>디랩온 2022 봄학기</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+	</head>
+	<body>
+		<style>
+			.event_container {
+				width: 100%;
+			}
+			.event_container_mobile {
+				width: 100%;
+			}
+			@media (max-width: 767.98px) {
+				.event_container {
+					display: none;
+				}
+				.event_container_mobile {
+					display: block;
+				}
+			}
+			@media (min-width: 768px) {
+				.event_container {
+					display: block;
+				}
+				.event_container_mobile {
+					display: none;
+				}
+			}
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+			.desktop_class_container {
+				position: absolute;
+				width: calc(1154 / 1440 * 910px);
+				top: calc(1154 / 1440 * 2133px);
+				left: calc(1154 / 1440 * 263px);
+
+				display: flex;
+				overflow: scroll;
+			}
+			.desktop_vod_class_container {
+				position: absolute;
+				width: calc(1154 / 1440 * 910px);
+				top: calc(1154 / 1440 * 3845px);
+				left: calc(1154 / 1440 * 263px);
+
+				display: flex;
+				overflow: scroll;
+			}
+			.desktop_class {
+				width: calc(1154 / 1440 * 910px);
+				height: calc(1154 / 1440 * 596px);
+			}
+			.desktop_dlabon_card {
+				width: calc(1154 / 1440 * 1096px);
+				height: calc(1154 / 1440 * 555px);
+				box-shadow: 0px 8px 28px -2px rgba(30, 30, 30, 0.1);
+				border-radius: calc(1154 / 1440 * 36px);
+			}
+			.class_btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				width: calc(1154 / 1440 * 203px);
+				height: calc(1154 / 1440 * 45px);
+				font-size: calc(1154 / 1440 * 20px);
+				line-height: calc(1154 / 1440 * 27px);
+				border: 1px solid #c4c4c4;
+				border-radius: 270px;
+			}
+			.class_btn:not(:first-child) {
+				margin-left: calc(1154 / 1440 * 20px);
+			}
+			.class_btn.on {
+				font-weight: bold;
+				color: #fc5000;
+				border: 1px solid #fc5000;
+				box-shadow: 0px 4px 12px #ececec;
+			}
+			.campus_card {
+				display: none;
+				box-shadow: 0px 8px 28px -2px rgba(30, 30, 30, 0.1);
+				border-radius: calc(1154 / 1440 * 36px);
+			}
+			.mobile_class_container {
+				display: flex;
+				justify-content: center;
+				position: absolute;
+				width: 100%;
+				top: calc(100vw / 460 * 1520);
+			}
+			.mobile_vod_class_container {
+				display: flex;
+				justify-content: center;
+				position: absolute;
+				width: 100%;
+				top: calc(100vw / 460 * 720);
+			}
+			.mobile_dlabon_card {
+				width: calc(100vw / 460 * 420);
+				box-shadow: 0px 8px 28px -2px rgba(30, 30, 30, 0.1);
+				border-radius: calc(100vw / 460 * 36);
+			}
+
+			.area-select select {
+				appearance: none;
+				width: 100%;
+				border: 1px solid #a0a0a0;
+				border-radius: 0;
+				color: #a0a0a0;
+			}
+
+			.area-select select:focus {
+				border-color: #fc5000;
+			}
+
+			.area-select.size-1 select {
+				height: 40px;
+				padding: 7px 38px 7px 14px;
+				background-color: #fff;
+				background-repeat: no-repeat;
+				background-position: right 12px center;
+				background-size: 13px 8px;
+				font-size: 16px;
+				line-height: 24px;
+			}
+
+			.area-select.size-1 select + .area-input-text {
+				margin-top: 10px;
+			}
+
+			.area-select.size-1.select-width-auto select {
+				width: auto;
+				min-width: 65px;
+			}
+
+			.area-select.size-1.select-date select {
+				min-width: 61px;
+				padding-right: 23px;
+				background-position: right 5px center;
+			}
+
+			.area-select.size-1.select-date .form-unit {
+				margin-left: 0;
+			}
+
+			.area-select.size-1.select-date .form-unit + select {
+				margin-left: 7px;
+			}
+
+			.area-select.size-1.select-date-time .form-unit {
+				margin-left: 7px;
+			}
+
+			.area-select.size-1.select-date-time .form-unit + select {
+				margin-left: 13px;
+			}
+
+			.area-select.size-1.select-date-time select {
+				min-width: 60px;
+				vertical-align: top;
+			}
+
+			.area-select.size-1.select-date-time select.time {
+				width: 100%;
+				margin-top: 10px;
+				margin-left: 0;
+			}
+
+			@media (min-width: 360px) {
+				.area-select.size-1.select-date select {
+					padding-right: 28px;
+					background-position: right 7px center;
+				}
+
+				.area-select.size-1.select-date .form-unit {
+					margin-left: 7px;
+				}
+
+				.area-select.size-1.select-date .form-unit + select {
+					margin-left: 12px;
+				}
+			}
+
+			@media (min-width: 1280px) {
+				.area-select.size-1 select {
+					height: 48px;
+					padding: 12px 46px 12px 13px;
+					background-position: right 15px center;
+					background-size: 16px 10px;
+					line-height: 22px;
+				}
+
+				.area-select.size-1.select-width-1 select {
+					width: 276px;
+				}
+
+				.area-select.size-1.select-width-auto select {
+					width: auto;
+					min-width: 84px;
+				}
+
+				.area-select.size-1.select-date select {
+					padding-right: 46px;
+					background-position: right 12px center;
+				}
+
+				.area-select.size-1.select-date .form-unit {
+					margin-left: 8px;
+				}
+
+				.area-select.size-1.select-date .form-unit + select {
+					margin-left: 13px;
+				}
+
+				.area-select.size-1.select-date-time {
+					margin-top: 36px;
+				}
+
+				.area-select.size-1.select-date-time .form-unit {
+					margin-left: 7px;
+				}
+
+				.area-select.size-1.select-date-time .form-unit + select {
+					margin-left: 12px;
+				}
+
+				.area-select.size-1.select-date-time select {
+					min-width: 66px;
+				}
+
+				.area-select.size-1.select-date-time select.time {
+					width: 231px;
+					margin-top: 0;
+				}
+
+				.area-select.size-1 select + .area-input-text {
+					display: inline-block;
+					width: 191px;
+					margin-top: 0;
+					margin-left: 13px;
+				}
+			}
+		</style>
+		<div class="event_container">
+			<img src="/static/event/spring2022/desktop_1.png" />
+			<img src="/static/event/spring2022/desktop_2.png" />
+			<div style="position: relative">
+				<img src="/static/event/spring2022/desktop_3.png" usemap="#Desktop3" width="1440" height="4652" />
+				<map name="Desktop3">
+					<area
+						alt="디랩온"
+						title=""
+						href="https://dlabon.com"
+						target="_parent"
+						coords="574,1236,868,1299"
+						shape="rect"
+					/>
+					<area
+						alt="디랩온"
+						title=""
+						href="https://dlabon.com"
+						target="_parent"
+						coords="574,3653,868,3716"
+						shape="rect"
+					/>
+				</map>
+				<div id="desktop_class_scroll" class="desktop_class_container">
+					<img
+						class="desktop_class"
+						src="/static/event/spring2022/desktop_class1.png"
+						usemap="#Desktop_Class1"
+						width="910"
+						height="596"
+					/>
+					<map name="Desktop_Class1">
+						<area
+							alt="next"
+							title=""
+							href="javascript:gotoDesktopClass(2)"
+							coords="115,56,156,96"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/1"
+							target="_parent"
+							coords="65,175,310,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/2"
+							target="_parent"
+							coords="335,175,580,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/3"
+							target="_parent"
+							coords="600,175,845,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/4"
+							target="_parent"
+							coords="65,357,310,512"
+							shape="rect"
+						/>
+					</map>
+					<img
+						class="desktop_class"
+						src="/static/event/spring2022/desktop_class2.png"
+						usemap="#Desktop_Class2"
+						width="910"
+						height="596"
+					/>
+					<map name="Desktop_Class2">
+						<area
+							alt="prev"
+							title=""
+							href="javascript:gotoDesktopClass(1)"
+							coords="50,56,91,96"
+							shape="rect"
+						/>
+						<area
+							alt="next"
+							title=""
+							href="javascript:gotoDesktopClass(3)"
+							coords="115,56,156,96"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/9"
+							target="_parent"
+							coords="65,175,310,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/10"
+							target="_parent"
+							coords="335,175,580,330"
+							shape="rect"
+						/>
+					</map>
+					<img
+						class="desktop_class"
+						src="/static/event/spring2022/desktop_class3.png"
+						usemap="#Desktop_Class3"
+						width="910"
+						height="596"
+					/>
+					<map name="Desktop_Class3">
+						<area
+							alt="prev"
+							title=""
+							href="javascript:gotoDesktopClass(2)"
+							coords="50,56,91,96"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/5"
+							target="_parent"
+							coords="65,175,310,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/6"
+							target="_parent"
+							coords="335,175,580,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/7"
+							target="_parent"
+							coords="600,175,845,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/8"
+							target="_parent"
+							coords="65,357,310,512"
+							shape="rect"
+						/>
+					</map>
+				</div>
+				<div id="desktop_vod_class_scroll" class="desktop_vod_class_container">
+					<img
+						class="desktop_class"
+						src="/static/event/spring2022/desktop_vod_class1.png"
+						usemap="#Desktop_VodClass1"
+						width="910"
+						height="596"
+					/>
+					<map name="Desktop_VodClass1">
+						<area
+							alt="next"
+							title=""
+							href="javascript:gotoDesktopVodClass(2)"
+							coords="115,56,156,96"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/44"
+							target="_parent"
+							coords="65,175,310,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/47"
+							target="_parent"
+							coords="335,175,580,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/48"
+							target="_parent"
+							coords="600,175,845,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/49"
+							target="_parent"
+							coords="65,357,310,512"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/50"
+							target="_parent"
+							coords="335,357,580,512"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/56"
+							target="_parent"
+							coords="600,357,845,512"
+							shape="rect"
+						/>
+					</map>
+					<img
+						class="desktop_class"
+						src="/static/event/spring2022/desktop_vod_class2.png"
+						usemap="#Desktop_VodClass2"
+						width="910"
+						height="596"
+					/>
+					<map name="Desktop_VodClass2">
+						<area
+							alt="prev"
+							title=""
+							href="javascript:gotoDesktopVodClass(1)"
+							coords="50,56,91,96"
+							shape="rect"
+						/>
+						<area
+							alt="next"
+							title=""
+							href="javascript:gotoDesktopVodClass(3)"
+							coords="115,56,156,96"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/55"
+							target="_parent"
+							coords="65,175,310,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/60"
+							target="_parent"
+							coords="335,175,580,330"
+							shape="rect"
+						/>
+					</map>
+					<img
+						class="desktop_class"
+						src="/static/event/spring2022/desktop_vod_class3.png"
+						usemap="#Desktop_VodClass3"
+						width="910"
+						height="596"
+					/>
+					<map name="Desktop_VodClass3">
+						<area
+							alt="prev"
+							title=""
+							href="javascript:gotoDesktopVodClass(2)"
+							coords="50,56,91,96"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/51"
+							target="_parent"
+							coords="65,175,310,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/53"
+							target="_parent"
+							coords="335,175,580,330"
+							shape="rect"
+						/>
+						<area
+							href="https://dlabon.com/courses/54"
+							target="_parent"
+							coords="600,175,845,330"
+							shape="rect"
+						/>
+					</map>
+				</div>
+			</div>
+			<img src="/static/event/spring2022/desktop_4.png" style="margin-top: calc(1154 / 1440 * 100px)" />
+			<div style="margin-top: calc(1154 / 1440 * 60px); display: flex; width: 100%; justify-content: center;">
+				<img
+					src="/static/event/spring2022/desktop_dlabon_card.png"
+					class="desktop_dlabon_card"
+					usemap="#C_Campus11"
+					width="1096"
+					height="555"
+				/>
+				<map name="C_Campus11">
+					<area
+						target="_blank"
+						alt="디랩온 홈페이지 바로가기"
+						title=""
+						href="https://dlabon.com"
+						coords="690,207,1005,258"
+						shape="rect"
+					/>
+					<area
+						target="_blank"
+						alt="카톡문의하기"
+						title=""
+						href="https://pf.kakao.com/_Zxclls"
+						coords="690,330,1005,385"
+						shape="rect"
+					/>
+				</map>
+			</div>
+			<img src="/static/event/spring2022/desktop_5.png" style="margin-top: calc(1154 / 1440 * 160px)" />
+
+			<div
+				style="margin-top: calc(1154 / 1440 * 40px); width: 100%; height:calc(1154 / 1440 * 900px); background-color: white; text-align: center;"
+			>
+				<div style="display: flex; justify-content: center;">
+					<div class="class_btn on campus1" onclick="selectCampus(1)">판교 캠퍼스</div>
+					<div class="class_btn campus2" onclick="selectCampus(2)">대치 캠퍼스</div>
+					<div class="class_btn campus3" onclick="selectCampus(3)">정자 캠퍼스</div>
+					<div class="class_btn campus4" onclick="selectCampus(4)">대구수성 캠퍼스</div>
+				</div>
+				<div style="margin-top: calc(1154 / 1440 * 20px); display: flex; justify-content: center;">
+					<div class="class_btn campus5" onclick="selectCampus(5)">목동 캠퍼스</div>
+					<div class="class_btn campus6" onclick="selectCampus(6)">동탄 캠퍼스</div>
+					<div class="class_btn campus7" onclick="selectCampus(7)">울산 캠퍼스</div>
+					<div class="class_btn campus8" onclick="selectCampus(8)">잠실 캠퍼스</div>
+				</div>
+				<div style="margin-top: calc(1154 / 1440 * 20px); display: flex; justify-content: center;">
+					<div class="class_btn campus9" onclick="selectCampus(9)">평촌 캠퍼스</div>
+					<div
+						class="class_btn campus10"
+						onclick="selectCampus(10)"
+						style="display: flex; align-items: center; justify-content: center; padding-top: 0"
+					>
+						<img
+							src="/static/event/spring2022/new_icon.png"
+							style="width: 30px; height:auto; display: block; margin-right: 5px; margin-top: 2px;"
+						/>
+						<span>송도 국제캠퍼스</span>
+					</div>
+					<div class="class_btn" style="visibility: hidden;"></div>
+					<div class="class_btn" style="visibility: hidden;"></div>
+				</div>
+				<div
+					style="margin: auto; margin-top: calc(1154 / 1440 * 100px) !important; width: calc(1154 / 1440 * 1096px)"
+				>
+					<!-- 판교 -->
+					<img
+						class="campus_card card1"
+						src="/static/event/spring2022/spring2022_desktop_campus_card1.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto; display: block"
+						alt=""
+						usemap="#C_Campus1"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus1">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/j2FQntKkZfuJvAs39"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_gnIBC/92961736"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 대치 -->
+					<img
+						class="campus_card card2"
+						src="/static/event/spring2022/spring2022_desktop_campus_card2.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus2"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus2">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/zCpE8AiyQJfULuyL8"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_WphBC/92772436"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 정자 -->
+					<img
+						class="campus_card card3"
+						src="/static/event/spring2022/spring2022_desktop_campus_card3.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus3"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus3">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/L9S7GWTmqR37ZErRA"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_xcxmdxeT/92965699"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 대구수성 -->
+					<img
+						class="campus_card card4"
+						src="/static/event/spring2022/spring2022_desktop_campus_card4.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus4"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus4">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/Tvc8GQVgxicSmcCz9"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_qDqBC/92982876"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 목동 -->
+					<img
+						class="campus_card card5"
+						src="/static/event/spring2022/spring2022_desktop_campus_card5.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus5"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus5">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/ddVi6JwXAQFM3M3s7"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_SxlgBj/92975241"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 동탄 -->
+					<img
+						class="campus_card card6"
+						src="/static/event/spring2022/spring2022_desktop_campus_card6.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus6"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus6">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/fjLj4VTs1G6Ypxrg8"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="https://pf.kakao.com/_IxhgBj"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 울산 -->
+					<img
+						class="campus_card card7"
+						src="/static/event/spring2022/spring2022_desktop_campus_card7.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus7"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus7">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/AYJEpcvxniiGMgpK6"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_KRxbgj/92973105"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 잠실 -->
+					<img
+						class="campus_card card8"
+						src="/static/event/spring2022/spring2022_desktop_campus_card8.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus8"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus8">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/1qsXZF5AonWDYpjj9"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_pxlxlxeT/92876626"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 평촌 -->
+					<img
+						class="campus_card card9"
+						src="/static/event/spring2022/spring2022_desktop_campus_card9.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus9"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus9">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/9QAXUj7A2zQkLnxZ7"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_Umpqxb/92751508"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+					<!-- 송도 -->
+					<img
+						class="campus_card card10"
+						src="/static/event/spring2022/spring2022_desktop_campus_card10.png"
+						style="width: calc(1154 / 1440 * 1096px); height:auto;"
+						alt=""
+						usemap="#C_Campus10"
+						width="1096"
+						height="514"
+					/>
+					<map name="C_Campus10">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/HmV4AcyUnVYs5tCD9"
+							coords="670,167,985,218"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="https://pf.kakao.com/_kbBxfb/chat"
+							coords="670,289,985,340"
+							shape="rect"
+						/>
+					</map>
+				</div>
+			</div>
+			<img src="/static/event/spring2022/desktop_6.png" />
+		</div>
+		<div class="event_container_mobile">
+			<img src="/static/event/spring2022/mobile_1.png" />
+			<img src="/static/event/spring2022/mobile_2.png" />
+			<div style="position: relative">
+				<img src="/static/event/spring2022/mobile_3.png" usemap="#Mobile3" width="460" height="2541" />
+				<map name="Mobile3">
+					<area
+						alt="디랩온"
+						title=""
+						href="https://dlabon.com"
+						target="_parent"
+						coords="84,811,378,874"
+						shape="rect"
+					/>
+				</map>
+				<div class="mobile_class_container">
+					<div id="mobile_class1" class="mobile_class" style="position: relative">
+						<img
+							src="/static/event/spring2022/mobile_class1.png"
+							usemap="#Mobile_Class1"
+							width="436"
+							height="834"
+						/>
+						<map name="Mobile_Class1">
+							<area alt="next" href="javascript:showMobileClass(2)" coords="360,50,385,80" shape="rect" />
+							<area
+								href="https://dlabon.com/courses/1"
+								target="_parent"
+								coords="30,145,405,265"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/2"
+								target="_parent"
+								coords="30,280,405,400"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/3"
+								target="_parent"
+								coords="30,415,405,535"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/4"
+								target="_parent"
+								coords="30,550,405,670"
+								shape="rect"
+							/>
+						</map>
+					</div>
+					<div id="mobile_class2" class="mobile_class" style="position: relative; display: none">
+						<img
+							src="/static/event/spring2022/mobile_class2.png"
+							usemap="#Mobile_Class2"
+							width="436"
+							height="834"
+						/>
+						<map name="Mobile_Class2">
+							<area alt="prev" href="javascript:showMobileClass(1)" coords="55,50,85,80" shape="rect" />
+							<area alt="next" href="javascript:showMobileClass(3)" coords="360,50,385,80" shape="rect" />
+							<area
+								href="https://dlabon.com/courses/9"
+								target="_parent"
+								coords="30,145,405,265"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/10"
+								target="_parent"
+								coords="30,280,405,400"
+								shape="rect"
+							/>
+						</map>
+					</div>
+					<div id="mobile_class3" class="mobile_class" style="position: relative; display: none">
+						<img
+							src="/static/event/spring2022/mobile_class3.png"
+							usemap="#Mobile_Class3"
+							width="436"
+							height="834"
+						/>
+						<map name="Mobile_Class3">
+							<area alt="prev" href="javascript:showMobileClass(2)" coords="55,50,85,80" shape="rect" />
+							<area
+								href="https://dlabon.com/courses/5"
+								target="_parent"
+								coords="30,145,405,265"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/6"
+								target="_parent"
+								coords="30,280,405,400"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/7"
+								target="_parent"
+								coords="30,415,405,535"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/8"
+								target="_parent"
+								coords="30,550,405,670"
+								shape="rect"
+							/>
+						</map>
+					</div>
+				</div>
+			</div>
+			<div style="position: relative">
+				<img src="/static/event/spring2022/mobile_4.png" usemap="#Mobile4" width="460" height="1713" />
+				<map name="Mobile4">
+					<area
+						alt="디랩온"
+						title=""
+						href="https://dlabon.com"
+						target="_parent"
+						coords="84,643,378,706"
+						shape="rect"
+					/>
+				</map>
+				<div class="mobile_vod_class_container">
+					<div id="mobile_vod_class1" class="mobile_vod_class" style="position: relative">
+						<img
+							src="/static/event/spring2022/mobile_vod_class1.png"
+							usemap="#Mobile_VodClass1"
+							width="436"
+							height="834"
+						/>
+						<map name="Mobile_VodClass1">
+							<area
+								alt="next"
+								href="javascript:showMobileVodClass(2)"
+								coords="360,50,385,80"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/44"
+								target="_parent"
+								coords="30,140,405,230"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/47"
+								target="_parent"
+								coords="30,245,405,335"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/48"
+								target="_parent"
+								coords="30,350,405,440"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/49"
+								target="_parent"
+								coords="30,455,405,545"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/50"
+								target="_parent"
+								coords="30,560,405,650"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/56"
+								target="_parent"
+								coords="30,665,405,755"
+								shape="rect"
+							/>
+						</map>
+					</div>
+					<div id="mobile_vod_class2" class="mobile_vod_class" style="position: relative; display: none">
+						<img
+							src="/static/event/spring2022/mobile_vod_class2.png"
+							usemap="#Mobile_VodClass2"
+							width="436"
+							height="834"
+						/>
+						<map name="Mobile_VodClass2">
+							<area
+								alt="prev"
+								href="javascript:showMobileVodClass(1)"
+								coords="55,50,85,80"
+								shape="rect"
+							/>
+							<area
+								alt="next"
+								href="javascript:showMobileVodClass(3)"
+								coords="360,50,385,80"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/55"
+								target="_parent"
+								coords="30,145,405,265"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/60"
+								target="_parent"
+								coords="30,280,405,400"
+								shape="rect"
+							/>
+						</map>
+					</div>
+					<div id="mobile_vod_class3" class="mobile_vod_class" style="position: relative; display: none">
+						<img
+							src="/static/event/spring2022/mobile_vod_class3.png"
+							usemap="#Mobile_VodClass3"
+							width="436"
+							height="834"
+						/>
+						<map name="Mobile_VodClass3">
+							<area
+								alt="prev"
+								href="javascript:showMobileVodClass(2)"
+								coords="55,50,85,80"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/51"
+								target="_parent"
+								coords="30,145,405,265"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/53"
+								target="_parent"
+								coords="30,280,405,400"
+								shape="rect"
+							/>
+							<area
+								href="https://dlabon.com/courses/54"
+								target="_parent"
+								coords="30,415,405,535"
+								shape="rect"
+							/>
+						</map>
+					</div>
+				</div>
+			</div>
+			<img src="/static/event/spring2022/mobile_5.png" style="margin-top: calc(100vw / 460 * 80)" />
+			<div style="margin-top: calc(100vw / 460 * 40); display: flex; width: 100%; justify-content: center;">
+				<img
+					src="/static/event/spring2022/mobile_dlabon_card.png"
+					class="mobile_dlabon_card"
+					usemap="#C_Campus_Mobile11"
+					width="420"
+					height="797"
+				/>
+				<map name="C_Campus_Mobile11">
+					<area
+						target="_blank"
+						alt="디랩온 홈페이지 바로가기"
+						title=""
+						href="https://dlabon.com"
+						coords="40,320,380,370"
+						shape="rect"
+					/>
+					<area
+						target="_blank"
+						alt="카톡문의하기"
+						title=""
+						href="https://pf.kakao.com/_Zxclls"
+						coords="40,490,380,540"
+						shape="rect"
+					/>
+					<area
+						target="_blank"
+						alt="문의상담"
+						title=""
+						href="tel:031-526-9313"
+						coords="40,660,380,710"
+						shape="rect"
+					/>
+				</map>
+			</div>
+			<img src="/static/event/spring2022/mobile_6.png" style="margin-top: calc(100vw / 460 * 160)" />
+			<div style="width:100%; background-color: white; text-align: center; margin-top: calc(100vw / 460 * 60)">
+				<div style="font-weight: bold; font-size: 18px; line-height: 27px; color: #FC5000;">
+					아래에서 가까운 캠퍼스를 선택해주세요!
+				</div>
+				<div style="margin-top: 12px">
+					<div class="area-select size-1" style="display: inline-block; width: 80%">
+						<select
+							id="campus_mobile"
+							onchange="mobileCampusChange()"
+							style="width: 100%; border: 2px solid #FC5000; background-image: url('/static/event/spring2022/arr-down-orange.svg'); background-size: 2.3rem 2.8rem; color: rgb(0, 0, 0)"
+						>
+							<option value="1">판교 캠퍼스</option>
+							<option value="2">대치 캠퍼스</option>
+							<option value="3">정자 캠퍼스</option>
+							<option value="4">대구수성 캠퍼스</option>
+							<option value="5">목동 캠퍼스</option>
+							<option value="6">동탄 캠퍼스</option>
+							<option value="7">울산 캠퍼스</option>
+							<option value="8">잠실 캠퍼스</option>
+							<option value="9">평촌 캠퍼스</option>
+							<option value="10">송도 캠퍼스</option>
+						</select>
+					</div>
+				</div>
+				<div style="margin: 60px 0 0 0; padding: 0 20px 0 20px">
+					<!-- 판교 -->
+					<img
+						class="campus_card card1"
+						src="/static/event/spring2022/spring2022_mobile_campus_card1.png"
+						style="width: 100%; height:auto; display: block"
+						alt=""
+						usemap="#C_Campus_Mobile1"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile1">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/j2FQntKkZfuJvAs39"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_gnIBC/92961736"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:031-526-9301"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 대치 -->
+					<img
+						class="campus_card card2"
+						src="/static/event/spring2022/spring2022_mobile_campus_card2.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile2"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile2">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/zCpE8AiyQJfULuyL8"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_WphBC/92772436"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:02-2088-1901"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 정자 -->
+					<img
+						class="campus_card card3"
+						src="/static/event/spring2022/spring2022_mobile_campus_card3.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile3"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile3">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/L9S7GWTmqR37ZErRA"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_xcxmdxeT/92965699"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:031-719-9301"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 대구수성 -->
+					<img
+						class="campus_card card4"
+						src="/static/event/spring2022/spring2022_mobile_campus_card4.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile4"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile4">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/Tvc8GQVgxicSmcCz9"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_qDqBC/92982876"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:053-716-9301"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 목동 -->
+					<img
+						class="campus_card card5"
+						src="/static/event/spring2022/spring2022_mobile_campus_card5.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile5"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile5">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/ddVi6JwXAQFM3M3s7"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_SxlgBj/92975241"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:02-2645-2201"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 동탄 -->
+					<img
+						class="campus_card card6"
+						src="/static/event/spring2022/spring2022_mobile_campus_card6.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile6"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile6">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/fjLj4VTs1G6Ypxrg8"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="https://pf.kakao.com/_IxhgBj"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:031-613-6201"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 울산 -->
+					<img
+						class="campus_card card7"
+						src="/static/event/spring2022/spring2022_mobile_campus_card7.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile7"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile7">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/AYJEpcvxniiGMgpK6"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_KRxbgj/92973105"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:052-256-9301"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 잠실 -->
+					<img
+						class="campus_card card8"
+						src="/static/event/spring2022/spring2022_mobile_campus_card8.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile8"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile8">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/1qsXZF5AonWDYpjj9"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_pxlxlxeT/92876626"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:02-419-9301"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 평촌 -->
+					<img
+						class="campus_card card9"
+						src="/static/event/spring2022/spring2022_mobile_campus_card9.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile9"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile9">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/9QAXUj7A2zQkLnxZ7"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="http://pf.kakao.com/_Umpqxb/92751508"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:031-427-9307"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+					<!-- 송도 -->
+					<img
+						class="campus_card card10"
+						src="/static/event/spring2022/spring2022_mobile_campus_card10.png"
+						style="width: 100%; height:auto;"
+						alt=""
+						usemap="#C_Campus_Mobile10"
+						width="420"
+						height="689"
+					/>
+					<map name="C_Campus_Mobile10">
+						<area
+							target="_blank"
+							alt="무료체험수업 신청하기"
+							title=""
+							href="https://forms.gle/HmV4AcyUnVYs5tCD9"
+							coords="40,219,380,270"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="카톡문의하기"
+							title=""
+							href="https://pf.kakao.com/_kbBxfb/chat"
+							coords="40,403,380,454"
+							shape="rect"
+						/>
+						<area
+							target="_blank"
+							alt="문의상담"
+							title=""
+							href="tel:010-2327-0321"
+							coords="40,578,380,629"
+							shape="rect"
+						/>
+					</map>
+				</div>
+			</div>
+			<img src="/static/event/spring2022/mobile_7.png" style="margin-top: calc(100vw / 460 * 100)" />
+		</div>
+		<script>
+			$(document).ready(function(e) {
+				$("img[usemap]").rwdImageMaps();
+			});
+			function gotoDesktopClass(classId) {
+				var scrollLeft = 0;
+				switch (classId) {
+					case 1:
+						scrollLeft = 0;
+						break;
+					case 2:
+						scrollLeft = 728;
+						break;
+					case 3:
+						scrollLeft = 1738;
+						break;
+				}
+				document.getElementById("desktop_class_scroll").scrollLeft = scrollLeft;
+			}
+			function gotoDesktopVodClass(classId) {
+				var scrollLeft = 0;
+				switch (classId) {
+					case 1:
+						scrollLeft = 0;
+						break;
+					case 2:
+						scrollLeft = 728;
+						break;
+					case 3:
+						scrollLeft = 1738;
+						break;
+				}
+				document.getElementById("desktop_vod_class_scroll").scrollLeft = scrollLeft;
+			}
+			function selectCampus(campus) {
+				$(".class_btn").removeClass("on");
+				$(".class_btn.campus" + campus).addClass("on");
+				$(".campus_card").hide();
+				$(".campus_card.card" + campus).show();
+			}
+			function showMobileClass(classId) {
+				$(".mobile_class").hide();
+				$("#mobile_class" + classId).show();
+				$("img[usemap]").rwdImageMaps();
+			}
+			function showMobileVodClass(classId) {
+				$(".mobile_vod_class").hide();
+				$("#mobile_vod_class" + classId).show();
+				$("img[usemap]").rwdImageMaps();
+			}
+			function mobileCampusChange() {
+				$(".campus_card").hide();
+				var selectCampusVal = $("#campus_mobile option:selected").val();
+				$(".campus_card.card" + selectCampusVal).show();
+				$(window).trigger("resize");
+			}
+		</script>
+	</body>
+</html>
